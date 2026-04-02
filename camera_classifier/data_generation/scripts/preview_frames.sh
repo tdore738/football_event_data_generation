@@ -23,6 +23,6 @@ ffmpeg -y \
     -vf "fps=3,select='lt(n\,${NUM_FRAMES})'" \
     -vsync 0 \
     -start_number 0 \
-    "$OUTDIR/frame_%06d.png"
+    "$OUTDIR/frame_%06d.jpg"
 
 echo "Done. Extracted first $NUM_FRAMES frames at 3 fps into $OUTDIR"

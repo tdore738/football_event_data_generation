@@ -27,8 +27,8 @@ mkdir -p "$TMPDIR"
 
 for ((i=0; i<NUM_FRAMES; i++)); do
     SRC_NUM=$((KICKOFF + i))
-    SRC_FILE=$(printf "%s/frame_%06d.png" "$FRAMEDIR" "$SRC_NUM")
-    DST_FILE=$(printf "%s/frame_%06d.png" "$TMPDIR" "$i")
+    SRC_FILE=$(printf "%s/frame_%06d.jpg" "$FRAMEDIR" "$SRC_NUM")
+    DST_FILE=$(printf "%s/frame_%06d.jpg" "$TMPDIR" "$i")
 
     if [ ! -f "$SRC_FILE" ]; then
         echo "Error: missing source frame $SRC_FILE"
@@ -41,10 +41,10 @@ for ((i=0; i<NUM_FRAMES; i++)); do
 done
 
 # Delete everything else from the original frame directory
-find "$FRAMEDIR" -maxdepth 1 -type f -name 'frame_*.png' -delete
+find "$FRAMEDIR" -maxdepth 1 -type f -name 'frame_*.jpg' -delete
 
 # Move the kept/renumbered files back into the original directory
-mv "$TMPDIR"/frame_*.png "$FRAMEDIR"/
+mv "$TMPDIR"/frame_*.jpg "$FRAMEDIR"/
 rmdir "$TMPDIR"
 
 echo "Done. Kept $NUM_FRAMES frames starting at kickoff frame $KICKOFF in $FRAMEDIR"
